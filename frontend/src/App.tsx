@@ -1,7 +1,16 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Home from "./pages/home/home"
+import AuthCallback from "./pages/auth-callback/authCallback"
+
 function App() {
   return (
     <>
-      <h1 className="text-red-700">Hello World!</h1>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />  
+        <Route path="/auth-callback" element={<AuthCallback />} />  
+      </Routes>      
+    </BrowserRouter>
     </>
   )
 }
