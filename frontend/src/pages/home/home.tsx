@@ -1,20 +1,51 @@
-import { Button } from "@/components/ui/button";
-import { useAuth0 } from "@auth0/auth0-react";
+import HomeList from "@/components/home/homeList"
 
 function Home() {
-  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
-
-  const login = async () => {
-    loginWithRedirect({
-      authorizationParams: {
-        redirect_uri: `${window.location.origin.toString()}/auth-callback`
-      }
-    });
-  }
+  const data = [
+    {
+      title: "Brown Munde",
+      artist: "AP Dhillon",
+      imageURL: "/brown_munde.png",
+      audioURL: "123",
+      duration: "3:10",
+      category: ["Bass", "New"],
+    },
+    {
+      title: "Brown Munde",
+      artist: "AP Dhillon",
+      imageURL: "/brown_munde.png",
+      audioURL: "123",
+      duration: "3:10",
+      category: ["Bass", "New"],
+    },
+    {
+      title: "Brown Munde",
+      artist: "AP Dhillon",
+      imageURL: "/brown_munde.png",
+      audioURL: "123",
+      duration: "3:10",
+      category: ["Bass", "New"],
+    },
+    {
+      title: "Brown Munde",
+      artist: "AP Dhillon",
+      imageURL: "/brown_munde.png",
+      audioURL: "123",
+      duration: "3:10",
+      category: ["Bass", "New"],
+    },
+    {
+      title: "Brown Munde",
+      artist: "AP Dhillon",
+      imageURL: "/brown_munde.png",
+      audioURL: "123",
+      duration: "3:10",
+      category: ["Bass", "New"],
+    },
+  ]
   return (
-    <div>
-      This is Home
-      {isAuthenticated ? (<Button onClick={() => logout()}>Logout</Button>) : (<Button onClick={() => login()}>Login</Button>)}
+    <div className="p-10">
+      <HomeList title={"Top Songs"} data={data} />
     </div>
   )
 }
