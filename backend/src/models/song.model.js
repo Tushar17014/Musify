@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { Album } from "./album.model.js"
 
 const songSchema = new mongoose.Schema({
     title: {type: String, required: true},
@@ -10,5 +11,5 @@ const songSchema = new mongoose.Schema({
     albumID: {type: mongoose.Schema.Types.ObjectId, ref: 'Album', required: false}
 }, {timestamps: true});
 
-export const Song = mongoose.model("Song", songSchema);
+export const Song = mongoose.model("Song", songSchema, "Song");
 

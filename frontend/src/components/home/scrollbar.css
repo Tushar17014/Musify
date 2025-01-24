@@ -1,0 +1,20 @@
+.scrollbar-custom {
+    overflow-x: hidden;
+}
+
+.scrollbar-custom:hover {
+    overflow-x: scroll;
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+    height: 0px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+    background: #212121;
+    border-radius: 10px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: #363636;
+}

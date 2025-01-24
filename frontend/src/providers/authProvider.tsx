@@ -1,7 +1,9 @@
+import { checkAdmin } from "@/features/auth/authSlice";
 import { axiosInstance } from "@/lib/axios";
 import { useAuth0 } from "@auth0/auth0-react"
 import { Loader } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 const updateApiToken = (token: string | null) => {
     if (token) {
@@ -14,12 +16,16 @@ const updateApiToken = (token: string | null) => {
 function AuthProvider({ children }: { children: React.ReactNode }) {
     const { getAccessTokenSilently } = useAuth0();
     const [loading, setLoading] = useState(true);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const initAuth = async () => {
             try {
                 const token = await getAccessTokenSilently();
                 updateApiToken(token);
+                const adminCheck = await axiosInstance.get("/auth/checkAdmin");
+                const isAdmin = adminCheck?.data.admin;
+                if(token && isAdmin) dispatch(checkAdmin(isAdmin));
             } catch (error) {
                 updateApiToken(null);
                 console.error("Error in Auth Provider: ", error);
